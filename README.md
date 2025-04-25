@@ -75,6 +75,15 @@ yarn dev
 
 The application will be available at `http://localhost:3000`
 
+## Test Account
+
+For testing purposes, you can use the following test account credentials:
+
+- **Email**: test@mail.com
+- **Password**: 95iPYAeUkjcD8xR
+
+The test account comes with pre-configured habits and data to help you explore the application's features. You can find the test account login section on the home page.
+
 ## Project Structure
 
 ```
