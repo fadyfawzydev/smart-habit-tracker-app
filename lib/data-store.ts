@@ -14,8 +14,8 @@ export async function readDataStore(): Promise<DataStore> {
   try {
     const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
       headers: {
-        'X-Master-Key': API_KEY,
-      },
+        'X-Master-Key': API_KEY as string,
+      } as HeadersInit,
     });
 
     if (!response.ok) {
@@ -40,8 +40,8 @@ export async function writeDataStore(data: DataStore): Promise<void> {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'X-Master-Key': API_KEY,
-      },
+        'X-Master-Key': API_KEY as string,
+      } as HeadersInit,
       body: JSON.stringify(data),
     });
 
