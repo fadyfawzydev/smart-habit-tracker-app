@@ -1,0 +1,136 @@
+{
+  "users": {
+    "google-oauth2|108484141608940701364": {
+      "name": "Fady Fawzy",
+      "email": "fadyfawzy10@gmail.com",
+      "habits": [
+        {
+          "title": "Morning Coffee",
+          "description": "",
+          "tags": ["Health", "Productivity"],
+          "frequency": {
+            "type": "daily"
+          },
+          "currentStreak": 0,
+          "longestStreak": 0,
+          "lastCompletedDate": null,
+          "id": "1745592735220",
+          "createdAt": "2025-04-25T14:52:15.220Z",
+          "completions": {
+            "2025-04-24": true,
+            "2025-04-23": true,
+            "2025-04-22": true,
+            "2025-04-21": true,
+            "2025-04-20": true,
+            "2025-04-19": true,
+            "2025-04-18": true
+          }
+        },
+        {
+          "title": "Gym",
+          "description": "",
+          "tags": ["Fitness"],
+          "frequency": {
+            "type": "daily"
+          },
+          "currentStreak": 0,
+          "longestStreak": 0,
+          "lastCompletedDate": null,
+          "id": "1745593841726",
+          "createdAt": "2025-04-25T15:10:41.726Z",
+          "completions": {}
+        }
+      ]
+    },
+    "auth0|680bbbcbaeb5b7dc77f99956": {
+      "name": "Test User",
+      "email": "test@mail.com",
+      "habits": [
+        {
+          "title": "Morning Meditation",
+          "description": "10 minutes of meditation",
+          "tags": ["Health", "Productivity"],
+          "frequency": {
+            "type": "daily"
+          },
+          "currentStreak": 7,
+          "longestStreak": 7,
+          "lastCompletedDate": "2025-04-25",
+          "id": "1745599471235",
+          "createdAt": "2025-04-25T16:44:31.235Z",
+          "completions": {
+            "2025-04-26": true,
+            "2025-04-25": true,
+            "2025-04-24": true,
+            "2025-04-23": true,
+            "2025-04-22": true,
+            "2025-04-21": true,
+            "2025-04-20": true,
+            "2025-04-19": true,
+            "2025-04-18": true,
+            "2025-04-17": true
+          }
+        },
+        {
+          "title": "Gym Workout",
+          "description": "Strength training and cardio",
+          "tags": ["Fitness", "Health"],
+          "frequency": {
+            "type": "weekly",
+            "daysOfWeek": ["Monday", "Wednesday", "Friday"]
+          },
+          "currentStreak": 2,
+          "longestStreak": 4,
+          "lastCompletedDate": "2025-04-24",
+          "id": "1745599471236",
+          "createdAt": "2025-04-25T16:45:31.235Z",
+          "completions": {
+            "2025-04-24": true,
+            "2025-04-22": true,
+            "2025-04-19": true,
+            "2025-04-17": true
+          }
+        },
+        {
+          "title": "Reading",
+          "description": "Read 30 minutes before bed",
+          "tags": ["Learning", "Productivity"],
+          "frequency": {
+            "type": "daily"
+          },
+          "currentStreak": 3,
+          "longestStreak": 5,
+          "lastCompletedDate": "2025-04-25",
+          "id": "1745599471237",
+          "createdAt": "2025-04-25T16:46:31.235Z",
+          "completions": {
+            "2025-04-26": true,
+            "2025-04-25": true,
+            "2025-04-24": true,
+            "2025-04-23": true
+          }
+        },
+        {
+          "title": "Weekly Planning",
+          "description": "Plan the week ahead every Sunday",
+          "tags": ["Productivity", "Organization"],
+          "frequency": {
+            "type": "weekly",
+            "daysOfWeek": ["Sunday"]
+          },
+          "currentStreak": 0,
+          "longestStreak": 0,
+          "lastCompletedDate": null,
+          "id": "1745599471238",
+          "createdAt": "2025-04-25T16:47:31.235Z",
+          "completions": {
+            "2025-04-26": true,
+            "2025-04-21": true,
+            "2025-04-14": true,
+            "2025-04-07": true
+          }
+        }
+      ]
+    }
+  }
+}
