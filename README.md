@@ -26,10 +26,11 @@ A modern, feature-rich habit tracking application built with Next.js, React, and
   - Dark/Light theme support
 
 ### Data Management
-- **Local Storage**
+- **JSONBin.io Integration**
+  - Secure cloud storage
+  - Real-time data synchronization
   - Persistent habit data
   - User preferences storage
-  - Progress tracking history
 
 ## Tech Stack
 
@@ -45,6 +46,10 @@ A modern, feature-rich habit tracking application built with Next.js, React, and
   - Recharts
 - **Animations**: Framer Motion
 
+### Backend
+- **Data Storage**: JSONBin.io
+- **Authentication**: Auth0
+
 ### Development Tools
 - TypeScript
 - ESLint
@@ -57,6 +62,39 @@ A modern, feature-rich habit tracking application built with Next.js, React, and
 ### Prerequisites
 - Node.js (latest LTS version recommended)
 - Yarn package manager
+- JSONBin.io account (free tier)
+
+### Setup JSONBin.io
+1. Create a JSONBin.io account at [https://jsonbin.io/](https://jsonbin.io/)
+2. Create a new bin:
+   - Click "Create New Bin"
+   - Give it a name (e.g., "habit-tracker")
+   - Click "Create"
+3. Get your credentials:
+   - Go to your profile → API Keys
+   - Copy your Master Key (starts with `$2b$10$`)
+   - Copy your Bin ID
+
+### Environment Variables
+Create a `.env.local` file in the project root with the following variables:
+
+```bash
+# Auth0 Configuration
+AUTH0_DOMAIN=dev-rykhzmm8gt5rmq6d.us.auth0.com
+AUTH0_CLIENT_ID=AnZgGkbTijG4xCesQ9UA9fRpIpjX29jK
+AUTH0_CLIENT_SECRET=oO_BtmgVRYgC1QDrBOrajyVVEyN9cIa_D8PKPbDhpu8XO9H00xQURzx8Q3uQborE
+AUTH0_SECRET=0106330b9578e7a0f9b5f952c7e39a1766d59436b8a13bfcd5b827cf9bc9162d
+APP_BASE_URL=http://localhost:3000/
+
+# JSONBin.io Configuration
+NEXT_PUBLIC_JSONBIN_BIN_ID=680be3098561e97a5007992e
+JSONBIN_API_KEY=$2a$10$.EDltonN.rU19wP07vfaVOEmVL.EWfN0BHCIoN9xnFPT297lYu3Iq
+```
+
+⚠️ **Security Note**: 
+- Never commit the `.env.local` file to version control
+- Keep your Auth0 and JSONBin.io credentials secure
+- The provided credentials are for development only. For production, use your own secure credentials.
 
 ### Installation
 1. Clone the repository
@@ -69,12 +107,23 @@ git clone [repository-url]
 yarn install
 ```
 
-3. Start the development server
+3. Set up environment variables
+   - Create `.env.local` file as described above
+   - Add your JSONBin.io credentials
+
+4. Start the development server
 ```bash
 yarn dev
 ```
 
 The application will be available at `http://localhost:3000`
+
+### Testing the Setup
+To verify your JSONBin.io setup is working correctly, visit:
+```
+http://localhost:3000/api/test-connection
+```
+You should see a success message if everything is configured properly.
 
 ### Building for Production
 

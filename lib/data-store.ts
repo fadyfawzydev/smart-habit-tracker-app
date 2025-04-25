@@ -1,34 +1,33 @@
 import { DataStore, Habit, UserData } from './types';
-import fs from 'fs';
-import path from 'path';
 
-const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'db.json');
+const BIN_ID = process.env.NEXT_PUBLIC_JSONBIN_BIN_ID;
+const API_KEY = process.env.JSONBIN_API_KEY;
 
-// Ensure the data directory exists
-const ensureDataDirectory = async () => {
-  const dataDir = path.dirname(DATA_FILE_PATH);
-  if (!fs.existsSync(dataDir)) {
-    await fs.promises.mkdir(dataDir, { recursive: true });
-  }
-};
-
-// Initialize the data store if it doesn't exist
-const initializeDataStore = async () => {
-  if (!fs.existsSync(DATA_FILE_PATH)) {
-    await fs.promises.writeFile(
-      DATA_FILE_PATH,
-      JSON.stringify({ users: {} }, null, 2)
-    );
-  }
-};
+if (!BIN_ID || !API_KEY) {
+  console.error('Missing environment variables:');
+  console.error('NEXT_PUBLIC_JSONBIN_BIN_ID:', BIN_ID);
+  console.error('JSONBIN_API_KEY:', API_KEY ? 'Set' : 'Not Set');
+  throw new Error('JSONBin.io credentials are not configured');
+}
 
 export async function readDataStore(): Promise<DataStore> {
   try {
-    await ensureDataDirectory();
-    await initializeDataStore();
-    
-    const data = await fs.promises.readFile(DATA_FILE_PATH, 'utf-8');
-    return JSON.parse(data);
+    const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+      headers: {
+        'X-Master-Key': API_KEY,
+      },
+    });
+
+    if (!response.ok) {
+      console.error('JSONBin.io read error:', {
+        status: response.status,
+        statusText: response.statusText,
+      });
+      throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.record || { users: {} };
   } catch (error) {
     console.error('Error reading data store:', error);
     return { users: {} };
@@ -37,8 +36,22 @@ export async function readDataStore(): Promise<DataStore> {
 
 export async function writeDataStore(data: DataStore): Promise<void> {
   try {
-    await ensureDataDirectory();
-    await fs.promises.writeFile(DATA_FILE_PATH, JSON.stringify(data, null, 2));
+    const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': API_KEY,
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      console.error('JSONBin.io write error:', {
+        status: response.status,
+        statusText: response.statusText,
+      });
+      throw new Error(`Failed to update data: ${response.status} ${response.statusText}`);
+    }
   } catch (error) {
     console.error('Error writing to data store:', error);
     throw error;
