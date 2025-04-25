@@ -1,5 +1,5 @@
 import { getUser } from "@/lib/auth0";
-import { Container, Typography, Box, useTheme, useMediaQuery } from "@mui/material";
+import { Container, Typography, Box } from "@mui/material";
 import HabitStats from "@/components/dashboard/HabitStats";
 import DashboardTabs from "@/components/dashboard/DashboardTabs";
 import { HabitProvider } from "@/lib/habitContext";
