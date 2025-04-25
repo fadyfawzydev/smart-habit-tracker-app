@@ -49,6 +49,7 @@ A modern, feature-rich habit tracking application built with Next.js, React, and
 - TypeScript
 - ESLint
 - PostCSS
+- Jest for testing
 - Turbopack (for development)
 
 ## Getting Started
@@ -75,6 +76,53 @@ yarn dev
 
 The application will be available at `http://localhost:3000`
 
+### Building for Production
+
+To create a production build:
+
+```bash
+yarn build
+```
+
+This will:
+- Compile and optimize all pages
+- Generate static pages where possible
+- Create server-side rendered pages
+- Optimize assets and images
+- Generate middleware
+
+To start the production server:
+
+```bash
+yarn start
+```
+
+### Testing
+
+Run the test suite:
+
+```bash
+yarn test
+```
+
+Run tests in watch mode during development:
+
+```bash
+yarn test:watch
+```
+
+Generate test coverage report:
+
+```bash
+yarn test:coverage
+```
+
+The project includes:
+- Unit tests for components and utilities
+- Integration tests for API routes
+- Mock implementations for Next.js features
+- Jest configuration in `jest.config.js` and `jest.setup.js`
+
 ## Test Account
 
 For testing purposes, you can use the following test account credentials:
@@ -98,6 +146,7 @@ smart-habit-tracker-app/
 │   └── shared/          # Reusable components
 ├── data/                 # Local data storage
 ├── lib/                  # Utility functions and helpers
+│   └── __mocks__/       # Mock implementations for testing
 ├── public/              # Static assets
 └── styles/              # Global styles
 ```
